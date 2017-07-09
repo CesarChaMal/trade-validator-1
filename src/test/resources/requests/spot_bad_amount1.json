@@ -1,0 +1,13 @@
+{
+  "customer": "PLUTO1",
+  "ccyPair": "EURUSD",
+  "type": "Spot",
+  "direction": "BUY",
+  "tradeDate": "2016-08-14",
+  "amount1": 10000d00.00,
+  "amount2": 1120000.00,
+  "rate": 1.12,
+  "valueDate": "2016-08-16",
+  "legalEntity": "CS Zurich",
+  "trader": "Johann Baumfiddler"
+}

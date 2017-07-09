@@ -16,6 +16,7 @@ import static org.springframework.http.HttpHeaders.ACCEPT;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static priv.rdo.trade.helper.TestFileUtils.fileToString;
 
@@ -81,7 +82,7 @@ public class TradeValidationEndpointSystemTest {
                 .log().all()
                 .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
                 .header(ACCEPT, APPLICATION_JSON_VALUE)
-                .body(fileToString("spot_nok_4th_of_July.json"))
+                .body(fileToString("spot_bad_4th_of_July.json"))
         .when()
                 .post("/trades")
         .then()
@@ -113,6 +114,86 @@ public class TradeValidationEndpointSystemTest {
                     .body("results.validationStatus", hasItems("FAILURE", "FAILURE", "SUCCESS"))
                     .body("results.errors[0].message", contains("currency value is invalid", "the exerciseStartDate has to be after the tradeDate and before the expiryDate"))
                     .body("results.errors[1].message", contains("We do not support a customer named PLUTO3", "the expiry date and the premium date shall be before the delivery date"))
+                ;
+        //@formatter:off
+    }
+
+    @Test
+    public void schemaValidationError_badDirection() throws Exception {
+        //@formatter:off
+        given()
+                .port(port)
+                .log().all()
+                .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE)
+                .body(fileToString("spot_bad_direction_enum.json"))
+        .when()
+                .post("/trades")
+        .then()
+                .log().all()
+                .assertThat()
+                    .statusCode(UNPROCESSABLE_ENTITY.value())
+                    .body("message", is("Invalid value: BUYZ. Possible values: [BUY, SELL]"))
+                ;
+        //@formatter:off
+    }
+
+    @Test
+    public void schemaValidationError_badTradeDateFormat() throws Exception {
+        //@formatter:off
+        given()
+                .port(port)
+                .log().all()
+                .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE)
+                .body(fileToString("spot_bad_trade_date.json"))
+        .when()
+                .post("/trades")
+        .then()
+                .log().all()
+                .assertThat()
+                    .statusCode(UNPROCESSABLE_ENTITY.value())
+                    .body("message", is("Invalid value for DayOfMonth (valid values 1 - 28/31)"))
+                ;
+        //@formatter:off
+    }
+
+    @Test
+    public void schemaValidationError_badAmountFormat() throws Exception {
+        //@formatter:off
+        given()
+                .port(port)
+                .log().all()
+                .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE)
+                .body(fileToString("spot_bad_amount1.json"))
+        .when()
+                .post("/trades")
+        .then()
+                .log().all()
+                .assertThat()
+                    .statusCode(UNPROCESSABLE_ENTITY.value())
+                    .body("message", is("Unexpected character ('d' (code 100))"))
+                ;
+        //@formatter:off
+    }
+
+    @Test
+    public void schemaValidationError_emptyRequestBody() throws Exception {
+        //@formatter:off
+        given()
+                .port(port)
+                .log().all()
+                .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
+                .header(ACCEPT, APPLICATION_JSON_VALUE)
+                .body("")
+        .when()
+                .post("/trades")
+        .then()
+                .log().all()
+                .assertThat()
+                    .statusCode(UNPROCESSABLE_ENTITY.value())
+                    .body("message", is("body cannot be empty!"))
                 ;
         //@formatter:off
     }
