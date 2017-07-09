@@ -1,0 +1,16 @@
+checking for weekends and holidays:
+    is public holiday:
+        http://kayaposoft.com/enrico/json/
+        for example:
+            http://kayaposoft.com/enrico/json/v1.0/index.php?action=isPublicHoliday&date=15-06-2017&country=pol
+
+    is workable day:
+        https://developer.tuxx.co.uk/api-overview/administration/workable_days
+        for example:
+            https://api.tuxx.co.uk/1.0/administration/is_workable_day.php?date=2017-07-03&region=pl
+
+    there are some other options, however they are not free to use (may require an account, credit card or so, even if they say its free)
+    for example:
+        http://www.officeholidays.com/developers/documentation
+        https://holidayapi.com/
+        and many others
