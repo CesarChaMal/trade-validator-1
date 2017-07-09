@@ -4,16 +4,20 @@ this is just another coding challange which I was given<br>
 I didn't have too much time to implement that, so please forgive me for some comments and shortcuts that i've taken<br>
 The goal was to validate information about FX Spot, Forward, Options trades
 
-**note**: some of the validations were implemented using simply javax validation. please refer to ```Trade``` class for a huge comment about that
+**note**: some of the validations were implemented using simply javax validation. please refer to **Trade** class for a huge comment about that
+
 <h3>running</h3>
-to run this project one just has to run the main method in __Application__ class<br>
-other option may be using<br>__mvn spring-boot:run__
-<br>
+
+to run this project one just has to run the main method in **Application** class<br>
+other option may be using<br>
+**mvn spring-boot:run**
+
 service is available on two endpoints:<br>
-http://localhost:8080/trades<br>
-http://localhost:8080/bulkTrades<br>
+http://localhost:8080/trades <br>
+http://localhost:8080/bulkTrades <br>
 easiest way to check it out is using Swagger UI tool:<br>
-http://localhost:8080/documentation
+http://localhost:8080/documentation <br>
+
 <h2> not mandatory requirements </h2>
 <h3> metrics </h3>
 available under http://localhost:8080/metrics/priv.rdo.trade.endpoint.TradeValidationEndpoint.trades.* 
@@ -36,8 +40,8 @@ swagger interface seems good enough for the job<br>
 and seriously now - I simply didn't have time for that
 
 <h2> assumptions </h2>
-most of my assumptions were based on that: based on that:
-http://www.investopedia.com/terms/o/option.asp
-http://www.investopedia.com/terms/f/futures.asp
-http://www.investopedia.com/terms/s/spottrade.asp
-https://comparic.pl/futures-spot-swap-forward-put-call-podstawowe-definicje-zwiazane-z-zabezpieczeniem-ryzyka-walutowego/
+most of my assumptions were based on that: based on that:<br>
+http://www.investopedia.com/terms/o/option.asp<br>
+http://www.investopedia.com/terms/f/futures.asp<br>
+http://www.investopedia.com/terms/s/spottrade.asp<br>
+https://comparic.pl/futures-spot-swap-forward-put-call-podstawowe-definicje-zwiazane-z-zabezpieczeniem-ryzyka-walutowego/<br>
