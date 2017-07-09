@@ -1,5 +1,19 @@
-note: some of the validations were implemented using simply javax validation
+<h1>Trade validator</h1>
+<h3>goal</h3>
+this is just another coding challange which I was given<br>
+I didn't have too much time to implement that, so please forgive me for some comments and shortcuts that i've taken<br>
+The goal was to validate information about FX Spot, Forward, Options trades
 
+**note**: some of the validations were implemented using simply javax validation. please refer to ```Trade``` class for a huge comment about that
+<h3>running</h3>
+to run this project one just has to run the main method in __Application__ class<br>
+other option may be using<br>__mvn spring-boot:run__
+<br>
+service is available on two endpoints:<br>
+http://localhost:8080/trades<br>
+http://localhost:8080/bulkTrades<br>
+easiest way to check it out is using Swagger UI tool:<br>
+http://localhost:8080/documentation
 <h2> not mandatory requirements </h2>
 <h3> metrics </h3>
 available under http://localhost:8080/metrics/priv.rdo.trade.endpoint.TradeValidationEndpoint.trades.* 
