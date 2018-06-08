@@ -12,6 +12,6 @@ class BigDecimalScaleTest extends Specification {
 
         then:
             input.toString() == "10"
-            output.toString() == "10.000"
+            output.toString() == "10.00"
     }
 }
