@@ -26,7 +26,7 @@ import static priv.rdo.trade.helper.TestFileUtils.fileToString;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class TradeValidationEndpointSystemTest {
+public class TradeValidationEndpointIT {
 
     @LocalServerPort
     private Integer port;

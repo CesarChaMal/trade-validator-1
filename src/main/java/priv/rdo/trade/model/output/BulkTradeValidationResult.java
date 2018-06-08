@@ -20,6 +20,8 @@ public class BulkTradeValidationResult {
     }
 
     public boolean containsErrors() {
-        return results.stream().map(TradeValidationResult::containsErrors).reduce(false, (identity, nextVal) -> identity || nextVal);
+        return results.stream()
+                .map(TradeValidationResult::containsErrors)
+                .reduce(false, (identity, nextVal) -> identity || nextVal);
     }
 }

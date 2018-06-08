@@ -4,8 +4,8 @@ import priv.rdo.trade.model.output.ValidationResult
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static ValidationResult.SUCCESS
-import static ValidationResult.failure
+import static priv.rdo.trade.model.output.ValidationResult.SUCCESS
+import static priv.rdo.trade.model.output.ValidationResult.failure
 
 /**
  * @author WrRaThY
@@ -23,7 +23,7 @@ class TradeValidationServiceTest extends Specification {
             errors.size() == expectedFailuresCount
 
         where:
-            validationResults                                       || expectedFailuresCount
+            validationResults                              || expectedFailuresCount
             [SUCCESS, failure("aaa", "bbb")]               || 1
             [failure("aaa", "bbb")]                        || 1
             [SUCCESS, SUCCESS, SUCCESS]                    || 0
